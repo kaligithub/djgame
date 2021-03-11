@@ -1,0 +1,15 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+
+# staticfiles
+staticfiles/
+
+# Local configuration files
+.env
+.isort.cfg
+.vscode/
+
+# Optic configuration files for API documentation POC
+.optic/
+optic.yml

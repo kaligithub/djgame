@@ -1,0 +1,21 @@
+version: '3'
+services:
+  web:
+    build: .
+    command: ["./start.sh"]
+    volumes:
+      - .:/code
+      - /static/play:/static/play
+      - /var/log/play:/var/log/play
+    expose:
+      - "9000"
+    ports:
+      - "9000:9000"
+    restart: always
+
+  celery:
+    build: .
+    command: celery -A play worker --queues=celery,health_quotations,life_quotations,communications
+    volumes:
+      - .:/code
+    restart: always
