@@ -43,6 +43,7 @@ LIBS = [
     'drf_yasg',
     'glue',
     'rest_framework',
+    'simple_history',
 ]
 
 APPS = [
@@ -68,6 +69,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'simple_history.middleware.HistoryRequestMiddleware',
 ]
 
 if 'debug_toolbar' in EXTRA_LIBS:
@@ -154,3 +156,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+SIMPLE_HISTORY_REVERT_DISABLED = True

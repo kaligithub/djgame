@@ -10,6 +10,7 @@ drf-yasg = "*"
 glue = "*"
 psycopg2-binary = "*"
 djangorestframework = "*"
+django-simple-history = "*"
 
 [dev-packages]
 

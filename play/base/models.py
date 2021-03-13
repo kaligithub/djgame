@@ -1,6 +1,7 @@
 import uuid
 
 from django.db import models
+from django.utils.crypto import get_random_string
 
 
 def get_random_string_value():
