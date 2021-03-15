@@ -13,9 +13,9 @@ services:
       - "9000:9000"
     restart: always
 
-  celery:
-    build: .
-    command: celery -A play worker --queues=celery,health_quotations,life_quotations,communications
-    volumes:
-      - .:/code
-    restart: always
+  #celery:
+    #build: .
+    #command: celery -A play worker --queues=celery,health_quotations,life_quotations,communications
+    #volumes:
+      #- .:/code
+    #restart: always
