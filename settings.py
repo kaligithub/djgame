@@ -50,6 +50,7 @@ APPS = [
     'play.base',
     'play.myapi',
     'play.rental',
+    'play.employee',
 ]
 
 EXTRA_LIBS = config(
@@ -104,7 +105,7 @@ WSGI_APPLICATION = 'play.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.db.backends.mysql',
         'NAME': config('DB_NAME'),
         'USER': config('DB_USER'),
         'PASSWORD': config('DB_PASSWORD'),

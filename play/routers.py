@@ -2,6 +2,7 @@ from rest_framework.routers import DefaultRouter
 
 from play.myapi.viewsets import HeroViewSet
 from play.rental.viewsets import FriendViewSet, BelongingViewSet, BorrowedViewSet
+from play.employee.viewsets import EmployeeViewSet
 
 
 
@@ -30,4 +31,10 @@ router.register(
       'borrowings',
       BorrowedViewSet,
       basename='borrowing-api',
+)
+
+router.register(
+      'employee',
+      EmployeeViewSet,
+      basename='employee-api',
 )
