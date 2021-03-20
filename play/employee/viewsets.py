@@ -25,9 +25,10 @@ class EmployeeViewSet(viewsets.ModelViewSet):
             data = req_data,
 
         )
-        
-        if serializer.is_valid():
-            serializer.save()
+
+        serializer.is_valid(raise_exception=True)
+            
+        serializer.save()
 
         return response.Ok(serializer.data)
 
