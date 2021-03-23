@@ -10,6 +10,8 @@ class HeroAdmin(ChangedDataSimpleHistoryAdmin):
     list_display = (
         'name',
         'alias',
+        'created_at',
+        'updated_at',
     )
 
     search_fields = (
@@ -19,8 +21,6 @@ class HeroAdmin(ChangedDataSimpleHistoryAdmin):
 
     readonly_fields = (
         'id',
-        'created_at',
-        'updated_at',
     )
 
     list_filter = (

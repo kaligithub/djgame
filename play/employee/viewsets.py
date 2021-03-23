@@ -5,17 +5,24 @@ from play.employee.models import Employee
 from play.employee.serializers import EmplyoeeSerializer
 
 from play.base import pagination, response
-
+from rest_framework import status
 
 class EmployeeViewSet(viewsets.ModelViewSet):
 
     queryset = Employee.objects.all()
     serializer_class = EmplyoeeSerializer
-    #permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated]
     
     def list(self, request):
-        
-        return response.Ok({'ok':'list'})
+        # Note the use of `get_queryset()` instead of `self.queryset`
+        queryset = self.get_queryset()
+        serializer = EmplyoeeSerializer(queryset, many=True)   
+        return response.Ok(serializer.data)
+
+    def retrieve(self, request, pk=None):
+        employee = self.get_object()
+        serializer = EmplyoeeSerializer(instance=employee)
+        return response.Ok(serializer.data)
 
     def create(self, request):
         #import pdb; pdb.set_trace()
@@ -33,19 +40,34 @@ class EmployeeViewSet(viewsets.ModelViewSet):
         return response.Ok(serializer.data)
 
 
-    def retrieve(self, request, pk=None):
-        
-        return response.Ok({'ok':'retrieve'})
-
-
     def update(self, request, pk=None):
-        
-        return response.Ok({'ok':'update'})
 
-    def partial_update(self, request, pk=None):
-        
-        return response.Ok({'ok':'patial_update'})
+        instance = self.get_object()
+        serializer = EmplyoeeSerializer(
+            instance=instance,
+            data = request.data
+        )
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
 
-    def destroy(self, request, pk=None):
-        
-        return response.Ok({'ok':'delete'})
+        return response.Ok(serializer.data)
+
+    def partial_update(self, request, *args, **kwargs):
+    
+        instance = self.get_object()
+        serializer = EmplyoeeSerializer(
+            instance=instance,
+            data=request.data, 
+            partial=True
+        )
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+
+        return response.Ok(serializer.data)
+
+    def destroy(self, request, *args, **kwargs):
+
+        instance = self.get_object()
+        instance.delete()
+
+        return response(status=status.HTTP_204_NO_CONTENT)
