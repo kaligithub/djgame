@@ -10,3 +10,5 @@ class HeroViewSet(viewsets.ModelViewSet):
     serializer_class = HeroSerializer
     permission_classes = [IsAuthenticated]
     
+
+

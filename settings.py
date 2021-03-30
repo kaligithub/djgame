@@ -52,6 +52,7 @@ APPS = [
     'play.myapi',
     'play.rental',
     'play.employee',
+    'play.polls',
 ]
 
 EXTRA_LIBS = config(

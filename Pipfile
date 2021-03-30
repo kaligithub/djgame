@@ -12,6 +12,7 @@ psycopg2-binary = "*"
 djangorestframework = "*"
 django-simple-history = "*"
 gunicorn = "*"
+pytest = "*"
 
 [dev-packages]
 
